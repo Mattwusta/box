@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>您的箱子紀錄</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>箱子名稱</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @yourboxes.each do |yourbox| %>
+      <tr>
+        <td><%= yourbox.description %></td>
+        <td><%= link_to 'Show', yourbox %></td>
+        <td><%= link_to 'Edit', edit_yourbox_path(yourbox) %></td>
+        <td><%= link_to 'Destroy', yourbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '您的新箱子', new_yourbox_path %>
