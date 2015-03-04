@@ -5,5 +5,8 @@
   <%= @yourbox.description %>
 </p>
 
+<% if @yourbox.user == current_user %>
 <%= link_to 'Edit', edit_yourbox_path(@yourbox) %> |
+<% end %>
+
 <%= link_to 'Back', yourboxes_path %>

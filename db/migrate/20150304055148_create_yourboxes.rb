@@ -3,7 +3,7 @@ class CreateYourboxes < ActiveRecord::Migration
     create_table :yourboxes do |t|
       t.string :description
 
-      t.timestamps null: false
+      t.timestamps 
     end
   end
 end

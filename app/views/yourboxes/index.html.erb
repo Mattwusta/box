@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>箱子名稱</th>
+       <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,9 +15,14 @@
     <% @yourboxes.each do |yourbox| %>
       <tr>
         <td><%= yourbox.description %></td>
+        <td><%= yourbox.user.email %></td>
         <td><%= link_to 'Show', yourbox %></td>
+
+      <% if yourbox.user == current_user %>
         <td><%= link_to 'Edit', edit_yourbox_path(yourbox) %></td>
         <td><%= link_to 'Destroy', yourbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +30,6 @@
 
 <br>
 
+<% if user_signed_in? %>
 <%= link_to '您的新箱子', new_yourbox_path %>
+<% end %>
