@@ -52,6 +52,6 @@ class YourboxesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def yourbox_params
-      params.require(:yourbox).permit(:description)
+      params.require(:yourbox).permit(:description, :image)
     end
 end
