@@ -1,4 +1,5 @@
 <%= form_for @yourbox, html: { multipart: true } do |f| %>
+
   <% if @yourbox.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@yourbox.errors.count, "error") %> prohibited this yourbox from being saved:</h2>
