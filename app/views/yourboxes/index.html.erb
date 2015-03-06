@@ -1,34 +1,17 @@
-<h1>您的箱子紀錄</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Description</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @yourboxes.each do |yourbox| %>
-      <tr>
-        <td><%= image_tag yourbox.image.url(:medium) %></td>
-        <td><%= yourbox.description %></td>
-        <td><%= yourbox.user.email if yourbox.user %></td>
-        <td><%= link_to 'Show', yourbox_path(yourbox) %></td>
+<div id="yourboxes" class="transitions-enabled">
+  <% @yourboxes.each do |yourbox| %>
+    <div class="box panel panel-default">
+      <%= link_to image_tag(yourbox.image.url(:medium)), yourbox %>
+      <div class="panel-body">
+        <%= yourbox.description %><br/>
+        <strong><%= yourbox.user.email if yourbox.user %></strong>
         <% if yourbox.user == current_user %>
-          <td><%= link_to 'Edit', edit_yourbox_path(yourbox) %></td>
-          <td><%= link_to 'Destroy', yourbox, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <div class="actions">
+            <%= link_to 'Edit', edit_pin_path(yourbox) %>
+            <%= link_to 'Destroy', yourbox, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if user_signed_in? %>
-  <%= link_to 'New Pin', new_yourbox_path %>
-<% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
